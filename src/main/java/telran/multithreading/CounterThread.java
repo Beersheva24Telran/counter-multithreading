@@ -1,5 +1,6 @@
 package telran.multithreading;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class CounterThread extends Thread{
@@ -16,7 +17,10 @@ public class CounterThread extends Thread{
     }
    
     private void counterIncrement() {
+        LocalDateTime ldt = LocalDateTime.now();
+        System.out.printf("time before incrementing is %s, the current value is %s\n", ldt, counter);
         counter.incrementAndGet();
+        System.out.printf("time after incrementing is %s, the current value is %s\n", LocalDateTime.now(), counter);
     }
     @Override
     public void run() {
